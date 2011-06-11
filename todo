@@ -17,5 +17,6 @@ Before M0 is considered "final", the following need to happen:
  * decide if there'll be support for non-uniform-sized call frames
  * complete coverage of the interp and assembler according to Devel::Cover
    - an occasional weird error condition can be uncovered, but everything that reasonably can be covered should be
+   - this also means we're confident that any implementation that passes all tests is complete
  * write a glossy brochure about M0
  * blog about the long-term plan for M0 integration into Parrot
