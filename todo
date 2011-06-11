@@ -1,6 +1,10 @@
 Before M0 is considered "final", the following need to happen:
  * find a better name for deref and/or set_ref
  * nail down calling conventions recommendations
+   - this means that we have working example code for whatever we're recommending
+   - putting the calling conventions burden on the callee is preferable
+   - become knowledgable enough to make sure that the calling conventions don't make useful optimizations impossible
+     - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
  * get some kind of ffi implementation working *and tested* in the Perl interp, if possible
  * decide on itoa or afromi
  * carefully define the conversion semantics for itoa/afromi
