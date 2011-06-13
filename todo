@@ -1,4 +1,6 @@
 Before M0 is considered "final", the following need to happen:
+
+TODO:
  * find a better name for deref and/or set_ref
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
@@ -6,7 +8,6 @@ Before M0 is considered "final", the following need to happen:
    - become knowledgable enough to make sure that the calling conventions don't make useful optimizations impossible
      - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
  * get some kind of ffi implementation working *and tested* in the Perl interp, if possible
- * decide on itoa or afromi
  * carefully define the conversion semantics for itoa/afromi
  * figure out exception recommendations
  * figure out what it means to support mmapping
@@ -18,5 +19,11 @@ Before M0 is considered "final", the following need to happen:
  * complete coverage of the interp and assembler according to Devel::Cover
    - an occasional weird error condition can be uncovered, but everything that reasonably can be covered should be
    - this also means we're confident that any implementation that passes all tests is complete
+
+IN PROGRESS:
  * write a glossy brochure about M0
  * blog about the long-term plan for M0 integration into Parrot
+
+
+COMPLETED:
+ * decide on itoa or afromi
