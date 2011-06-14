@@ -11,8 +11,6 @@ TODO:
  * carefully define the conversion semantics for itoa/afromi
  * figure out exception recommendations
  * figure out what it means to support mmapping
- * figure out endianness and word size for m0b
-   - endianness will probably be little 
  * decide whether the M0 interp should install a default exception handler to puke to stderr
  * decide whether goto_chunk should be just goto or if it should also update CHUNK, BCS, etc
  * decide if there'll be support for non-uniform-sized call frames
@@ -27,3 +25,4 @@ IN PROGRESS:
 
 COMPLETED:
  * decide on itoa or afromi
+ * figure out endianness and word size for m0b
