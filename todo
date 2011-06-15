@@ -7,6 +7,10 @@ TODO:
    - become knowledgeable enough to make sure that the calling conventions don't make useful optimizations impossible
      - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
  * get some kind of ffi implementation working *and tested* in the Perl interp, if possible
+   - candidate Perl modules:
+   - FFI - probably abandoned, can "fix" test failures, doesn't seem to be commonly used
+   - C::Dynalib - tests fail gloriously, probably abandoned, doesn't seem to be commonly used
+   - perl-ctypes - test fail gloriously in an infinite loop, doesn't look very usable
  * carefully define the conversion semantics for itoa/afromi
  * figure out exception recommendations
  * figure out what it means to support mmapping
