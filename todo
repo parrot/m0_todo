@@ -25,6 +25,11 @@ TODO:
  * complete coverage of the interp and assembler according to Devel::Cover
    - an occasional weird error condition can be uncovered, but everything that reasonably can be covered should be
    - this also means we're confident that any implementation that passes all tests is complete
+ * figure out how much fanciness can be done with registers
+   - iwbn to have them be space-efficient
+   - iwbn to enable mapping of N registers to machine-specific registers
+   - iwbn to somehow map M0 registers to hardware registers in general
+   - iwbn to enable precise GC, i.e. no stack walking
 
 IN PROGRESS:
  * write a glossy brochure about M0
