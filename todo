@@ -11,11 +11,15 @@ TODO:
    - FFI - probably abandoned, can "fix" test failures, doesn't seem to be commonly used
    - C::Dynalib - tests fail gloriously, probably abandoned, doesn't seem to be commonly used
    - perl-ctypes - test fail gloriously in an infinite loop, doesn't look very usable
+   - syscall and pack - ???
  * carefully define the conversion semantics for itoa/afromi
  * figure out exception recommendations
  * figure out what it means to support mmapping
- * decide whether the M0 interp should install a default exception handler to puke to stderr
+   - this means that you don't need to mutate from the file at runtime
+   - this is essentially a characteristic that we need to revisit regularly as the spec solidifies
  * decide if there'll be support for non-uniform-sized call frames
+   - this drops some optimizations, but it's very likely a Good Idea
+   - make sure it's not impossible for an implementation to support this while still complying with the spec
  * be certain that M0 can provide solid lvalue semantics
    - http://trac.parrot.org/parrot/wiki/WhyDoesNQPGenerateInefficientCode
  * complete coverage of the interp and assembler according to Devel::Cover
@@ -24,7 +28,10 @@ TODO:
 
 IN PROGRESS:
  * write a glossy brochure about M0
+   - integrate feedback from kid51
  * blog about the long-term plan for M0 integration into Parrot
+ * decide whether the M0 interp should install a default exception handler to puke to stderr
+   - The code needs to take care of this.  TODO: say as much in the spec.
 
 
 COMPLETED:
