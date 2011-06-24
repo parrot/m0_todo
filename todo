@@ -30,8 +30,6 @@ IN PROGRESS:
  * write a glossy brochure about M0
    - integrate feedback from kid51
  * blog about the long-term plan for M0 integration into Parrot
- * decide whether the M0 interp should install a default exception handler to puke to stderr
-   - The code needs to take care of this.  TODO: say as much in the spec.
 
 
 COMPLETED:
@@ -39,3 +37,4 @@ COMPLETED:
  * figure out endianness and word size for m0b
  * find a better name for deref and/or set_ref (existing names wfm)
  * decide whether goto_chunk should be just goto or if it should also update CHUNK, BCS, etc (the latter)
+ * decide whether the M0 interp should install a default exception handler to puke to stderr
