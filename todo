@@ -17,9 +17,6 @@ TODO:
  * figure out what it means to support mmapping
    - this means that you don't need to mutate from the file at runtime
    - this is essentially a characteristic that we need to revisit regularly as the spec solidifies
- * decide if there'll be support for non-uniform-sized call frames
-   - this drops some optimizations, but it's very likely a Good Idea
-   - make sure it's not impossible for an implementation to support this while still complying with the spec
  * be certain that M0 can provide solid lvalue semantics
    - http://trac.parrot.org/parrot/wiki/WhyDoesNQPGenerateInefficientCode
  * complete coverage of the interp and assembler according to Devel::Cover
@@ -43,3 +40,6 @@ COMPLETED:
  * find a better name for deref and/or set_ref (existing names wfm)
  * decide whether goto_chunk should be just goto or if it should also update CHUNK, BCS, etc (the latter)
  * decide whether the M0 interp should install a default exception handler to puke to stderr
+ * decide if there'll be support for non-uniform-sized call frames
+   - this drops some optimizations, but it's very likely a Good Idea
+   - make sure it's not impossible for an implementation to support this while still complying with the spec
