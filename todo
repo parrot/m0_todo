@@ -16,12 +16,22 @@ TODO:
  * figure out exception recommendations
  * figure out what it means to support mmapping
    - this means that you don't need to mutate from the file at runtime
-   - this is essentially a characteristic that we need to revisit regularly as the spec solidifies
+   - this is a characteristic that we need to revisit regularly as the spec solidifies
  * be certain that M0 can provide solid lvalue semantics
    - http://trac.parrot.org/parrot/wiki/WhyDoesNQPGenerateInefficientCode
+   - probably a function of 6model support, so not an M0 issue
  * complete coverage of the interp and assembler according to Devel::Cover
    - an occasional weird error condition can be uncovered, but everything that reasonably can be covered should be
    - this also means we're confident that any implementation that passes all tests is complete
+ * look into stealing Go's concept of arrays, slices and pointers
+ * define how string/character manipulation will work
+   - will have 8-byte header of size and encoding
+   - what's a good way to deal with individual characters when registers are word-sized?
+ * make it possible to have something like C's function pointers
+ * define the workflow for loading an external m0b library
+ * there's some good discussion about pointers in M0 on http://irclog.perlgeek.de/parrot/2011-07-04
+   - distil the relevant bits, decide on something, stick it into the spec
+   - there was some discussion about a hack to enable registers pointing to unique values, though I couldn't find it just now
  * figure out how much fanciness can be done with registers
    - iwbn to have them be space-efficient
    - iwbn to enable mapping of N registers to machine-specific registers
