@@ -6,13 +6,7 @@ TODO:
    - putting the calling conventions burden on the callee is preferable
    - become knowledgeable enough to make sure that the calling conventions don't make useful optimizations impossible
      - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
- * get some kind of ffi implementation working *and tested* in the Perl interp, if possible
-   - candidate Perl modules:
-   - FFI - probably abandoned, can "fix" test failures, doesn't seem to be commonly used
-   - C::Dynalib - tests fail gloriously, probably abandoned, doesn't seem to be commonly used
-   - perl-ctypes - test fail gloriously in an infinite loop, doesn't look very usable
-   - syscall and pack - ???
- * carefully define the conversion semantics for itoa/afromi
+ * carefully define the conversion semantics for convert_*
  * figure out exception recommendations
  * figure out what it means to support mmapping
    - this means that you don't need to mutate from the file at runtime
@@ -37,6 +31,15 @@ TODO:
    - iwbn to enable mapping of N registers to machine-specific registers
    - iwbn to somehow map M0 registers to hardware registers in general
    - iwbn to enable precise GC, i.e. no stack walking
+
+TODO (requires C implementation):
+ * get some kind of ffi implementation working *and tested* in the Perl interp, if possible
+   - candidate Perl modules:
+   - FFI - probably abandoned, can "fix" test failures, doesn't seem to be commonly used
+   - C::Dynalib - tests fail gloriously, probably abandoned, doesn't seem to be commonly used
+   - perl-ctypes - test fail gloriously in an infinite loop, doesn't look very usable
+   - syscall and pack - ???
+
 
 IN PROGRESS:
  * write a glossy brochure about M0
