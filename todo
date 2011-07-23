@@ -1,8 +1,6 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
- * re-sync the spec with the latest changes to the p5 prototype
-   - all ints are now signed
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
    - putting the calling conventions burden on the callee is preferable
@@ -10,7 +8,7 @@ TODO:
      - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
  * carefully define the conversion semantics for convert_*
  * figure out exception recommendations
- * figure out what it means to support mmapping
+ * support mmapping
    - this means that you don't need to mutate from the file at runtime
    - this is a characteristic that we need to revisit regularly as the spec solidifies
  * be certain that M0 can provide solid lvalue semantics
@@ -23,6 +21,7 @@ TODO:
  * define how string/character manipulation will work
    - will have 8-byte header of size and encoding
    - what's a good way to deal with individual characters when registers are word-sized?
+   - currently have get/set x word/byte.  not sure if this is optimal but it seems to work ok
  * make it possible to have something like C's function pointers
  * define the workflow for loading an external m0b library
  * there's some good discussion about pointers in M0 on http://irclog.perlgeek.de/parrot/2011-07-04
@@ -50,7 +49,9 @@ IN PROGRESS:
 
 
 COMPLETED:
- * decide on itoa or afromi
+ * re-sync the spec with the latest changes to the p5 prototype
+   - all ints are now signed
+ * decide on itoa or afromi ("convert")
  * figure out endianness and word size for m0b
  * find a better name for deref and/or set_ref (existing names wfm)
  * decide whether goto_chunk should be just goto or if it should also update CHUNK, BCS, etc (the latter)
