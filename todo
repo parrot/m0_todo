@@ -1,6 +1,8 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * re-sync the spec with the latest changes to the p5 prototype
+   - all ints are now signed
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
    - putting the calling conventions burden on the callee is preferable
