@@ -1,6 +1,7 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * unTODO m0_poke_caller.t, make it run, make it output TAP
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
    - putting the calling conventions burden on the callee is preferable
