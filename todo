@@ -1,11 +1,11 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
- * unTODO m0_poke_caller.t, make it run, make it output TAP
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
    - putting the calling conventions burden on the callee is preferable
-   - become knowledgeable enough to make sure that the calling conventions don't make useful optimizations impossible
+   - become knowledgeable enough to make sure that the calling conventions
+     don't make useful optimizations impossible
      - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
  * carefully define the conversion semantics for convert_*
  * figure out exception recommendations
@@ -16,18 +16,14 @@ TODO:
    - http://trac.parrot.org/parrot/wiki/WhyDoesNQPGenerateInefficientCode
    - probably a function of 6model support, so not an M0 issue
  * complete coverage of the interp and assembler according to Devel::Cover
-   - an occasional weird error condition can be uncovered, but everything that reasonably can be covered should be
+   - an occasional weird error condition can be uncovered, but everything that
+     reasonably can be covered should be
    - this also means we're confident that any implementation that passes all tests is complete
  * look into stealing Go's concept of arrays, slices and pointers
- * define how string/character manipulation will work
-   - will have 8-byte header of size and encoding
-   - what's a good way to deal with individual characters when registers are word-sized?
-   - currently have get/set x word/byte.  not sure if this is optimal but it seems to work ok
- * make it possible to have something like C's function pointers
- * define the workflow for loading an external m0b library
  * there's some good discussion about pointers in M0 on http://irclog.perlgeek.de/parrot/2011-07-04
    - distil the relevant bits, decide on something, stick it into the spec
-   - there was some discussion about a hack to enable registers pointing to unique values, though I couldn't find it just now
+   - there was some discussion about a hack to enable registers pointing to
+     unique values, though I couldn't find it just now
  * figure out how much fanciness can be done with registers
    - iwbn to have them be space-efficient
    - iwbn to enable mapping of N registers to machine-specific registers
@@ -47,16 +43,31 @@ IN PROGRESS:
  * write a glossy brochure about M0
    - integrate feedback from kid51
  * blog about the long-term plan for M0 integration into Parrot
+ * define the workflow for loading an external m0b library
+   - library-friendly chunk name constants are implemented and tested
+   - the op and its semantics need to be defined
+ * define how string/character manipulation will work
+   - will have 8-byte header of size and encoding
+   - what's a good way to deal with individual characters when registers are word-sized?
+   - currently have get/set x word/byte.  not sure if this is optimal but it seems to work ok
+   - this task is no longer IN PROGRESS when I decide there's nothing better or
+     something better gets implemented
+ * unTODO m0_poke_caller.t, make it run, make it output TAP
+   - it runs and has TODO comments for desired TAP output.  adding proper TAP
+     output shouldn't take more than 20 minutes from start to push
 
 
 COMPLETED:
+ * make it possible to have something like C's function pointers
  * re-sync the spec with the latest changes to the p5 prototype
    - all ints are now signed
  * decide on itoa or afromi ("convert")
  * figure out endianness and word size for m0b
  * find a better name for deref and/or set_ref (existing names wfm)
- * decide whether goto_chunk should be just goto or if it should also update CHUNK, BCS, etc (the latter)
+ * decide whether goto_chunk should be just goto or if it should also update
+ * CHUNK, BCS, etc (it updates CHUNK, etc.  Doing so is sane, not magical.)
  * decide whether the M0 interp should install a default exception handler to puke to stderr
  * decide if there'll be support for non-uniform-sized call frames
    - this drops some optimizations, but it's very likely a Good Idea
-   - make sure it's not impossible for an implementation to support this while still complying with the spec
+   - make sure it's not impossible for an implementation to support this while
+     still complying with the spec
