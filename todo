@@ -52,9 +52,7 @@ IN PROGRESS:
    - currently have get/set x word/byte.  not sure if this is optimal but it seems to work ok
    - this task is no longer IN PROGRESS when I decide there's nothing better or
      something better gets implemented
- * unTODO m0_poke_caller.t, make it run, make it output TAP
-   - it runs and has TODO comments for desired TAP output.  adding proper TAP
-     output shouldn't take more than 20 minutes from start to push
+   - also, internal string layout needs to be in the spec
 
 
 COMPLETED:
@@ -71,3 +69,6 @@ COMPLETED:
    - this drops some optimizations, but it's very likely a Good Idea
    - make sure it's not impossible for an implementation to support this while
      still complying with the spec
+ * unTODO m0_poke_caller.t, make it run, make it output TAP
+   - it runs and has TODO comments for desired TAP output.  adding proper TAP
+     output shouldn't take more than 20 minutes from start to push
