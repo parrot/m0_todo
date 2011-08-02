@@ -13,7 +13,6 @@ TODO:
    - become knowledgeable enough to make sure that the calling conventions
      don't make useful optimizations impossible
      - polymorphic inline caching, prototypes with multiple dispatch, JIT, others
- * carefully define the conversion semantics for convert_*
  * figure out exception recommendations
  * support mmapping
    - this means that you don't need to mutate from the file at runtime
@@ -81,3 +80,4 @@ COMPLETED:
  * test metadata and annotations (very basic metadata tests are done, annotations 
     are a use case for metadata)
  * add internal string layout to the spec
+ * carefully define the conversion semantics for convert_*
