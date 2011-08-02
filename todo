@@ -1,6 +1,11 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * add chunk tags
+   - decide if tags should maps to a value or just be present/absent
+   - e.g. .tag "libmain"
+   -   vs .tag "src_file" "/home/jimbob/src/parrot-quux/m0/string/api.m0"
+   - or both
  * add internal string layout to the spec
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
