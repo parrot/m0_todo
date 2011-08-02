@@ -6,7 +6,6 @@ TODO:
    - e.g. .tag "libmain"
    -   vs .tag "src_file" "/home/jimbob/src/parrot-quux/m0/string/api.m0"
    - or both
- * add internal string layout to the spec
  * nail down calling conventions recommendations
    - this means that we have working example code for whatever we're recommending
    - putting the calling conventions burden on the callee is preferable
@@ -78,5 +77,6 @@ COMPLETED:
  * unTODO m0_poke_caller.t, make it run, make it output TAP
    - it runs and has TODO comments for desired TAP output.  adding proper TAP
      output shouldn't take more than 20 minutes from start to push
-  * test metadata and annotations (very basic metadata tests are done, annotations 
+ * test metadata and annotations (very basic metadata tests are done, annotations 
     are a use case for metadata)
+ * add internal string layout to the spec
