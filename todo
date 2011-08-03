@@ -1,6 +1,10 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * update prototype with recent spec changes
+   - out-of-range conversions I/N
+   - conversion semantics (drop fractional part)
+   - variable register sizes (SP == void*, I = platform word, N = 8B)
  * update semantics of get_word and set_word.  Define how big a word is.
  * add chunk tags
    - decide if tags should maps to a value or just be present/absent
