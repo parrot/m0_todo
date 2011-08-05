@@ -1,6 +1,8 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * replace 'x' with '_' as ignored op argument
+ * explicitly specify that copy_mem can poke into GC'd mem
  * update prototype with recent spec changes
    - out-of-range conversions I/N
    - conversion semantics (drop fractional part)
