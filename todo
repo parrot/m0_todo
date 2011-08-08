@@ -5,7 +5,6 @@ TODO:
  * add bitwise NOT
  * move spilling discussion closer to description of registers
    - in general, the pdd needs a reorg
- * explicitly specify that copy_mem can poke into GC'd mem
  * update prototype with recent spec changes
    - out-of-range conversions I/N
    - conversion semantics (drop fractional part)
@@ -96,3 +95,4 @@ COMPLETED:
    - have local stashed commit.  not sure if this is actually better.  AFAIU _
      usually means "default argument", not "ignored", and I don't want to
      conflate the concepts.
+ * explicitly specify that copy_mem can poke into GC'd mem
