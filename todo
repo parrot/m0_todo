@@ -2,6 +2,7 @@ Before M0 is considered "final", the following need to happen:
 
 TODO:
  * add goto_unless (opposite of goto_if)
+ * add bitwise NOT
  * move spilling discussion closer to description of registers
    - in general, the pdd needs a reorg
  * replace 'x' with '_' as ignored op argument

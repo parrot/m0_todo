@@ -13,11 +13,6 @@ necessary.
 Comparison ops are missing as well.
 
 
-Bitwise ops
------------
-An operation for bitwise not is missing
-
-
 Register ops
 ------------
 The get/set word/byte instructions are insufficient to deal with signed/unsigned
