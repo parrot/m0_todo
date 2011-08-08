@@ -1,3 +1,12 @@
+not_gerd (no relation to gerd) dropped by #parrot and shared the following
+thoughts about the then-current state of M0.  I (cotto) have moved them into
+this repository to make sure that the worthwhile bits get implemented and that
+the pieces that don't get implemented at least won't get dropped accidentally.
+As I delete items, I'll either add them to the todo list or delete them
+outright.  not_gerd did a good job of finding some holes, and everything he
+nopasted is at least worth considering, though not everything will go into the
+M0 spec and prototypes.
+
 COMENTS ON THE M0 INSTRUCTION SET
 
 Math/numeric ops
