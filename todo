@@ -5,7 +5,6 @@ TODO:
  * add bitwise NOT
  * move spilling discussion closer to description of registers
    - in general, the pdd needs a reorg
- * replace 'x' with '_' as ignored op argument
  * explicitly specify that copy_mem can poke into GC'd mem
  * update prototype with recent spec changes
    - out-of-range conversions I/N
@@ -93,3 +92,7 @@ COMPLETED:
     are a use case for metadata)
  * add internal string layout to the spec
  * carefully define the conversion semantics for convert_*
+ * replace 'x' with '_' as ignored op argument
+   - have local stashed commit.  not sure if this is actually better.  AFAIU _
+     usually means "default argument", not "ignored", and I don't want to
+     conflate the concepts.
