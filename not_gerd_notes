@@ -1,0 +1,185 @@
+COMENTS ON THE M0 INSTRUCTION SET
+
+Control flow
+------------
+Any conditional branching instruction (ie goto_if) should be accompanied by an
+instruction accepting the complement as argument. This is necessary to
+efficiently implement certain higher-level control flow constructs.
+
+Prior art includes x86 ASM (jz, jnz) and Nanojit LIR (jt, jf).
+
+LLVM IR chooses a different approach: Their branching instruction (br) accepts
+two labels. This decision is probably related to their control flow semantics:
+as branching terminates the current basic block anyway, falling through to the
+next instruction has no real benefit.
+
+Also, I don't see a reason to calculate target addresses via 256 * *$1 + *$2 as
+the operands are not immediate (according to spec). One could use such a scheme
+to increase the size of the address space, but for that purpose, a higher value
+than 256 (ie UINT_MAX) should be used. It's probably unnecessary anyway because
+a chunk's bytecode segment size should never exceed 2^32.
+
+If the spec is indeed correct that the branching instructions take non-immediate
+operands, adding immediate versions might be a good idea.
+
+
+Math/numeric ops
+----------------
+Currently, the math instructions do not respect the difference between signed
+and unsigned integers. It is necessary to either add more ops, or to mandate a
+two's complement representation (which is for example what LLVM IR does).
+
+Even if two's complement is used, conversion from integer to numeric needs to
+differentiate between signed and unsigned, so at least one additional op is
+necessary.
+
+Comparison ops are missing as well.
+
+
+Bitwise ops
+-----------
+An operation for bitwise not is missing
+
+
+Register ops
+------------
+The get/set word/byte instructions are insufficient to deal with signed/unsigned
+integers of common sizes.
+
+There should be instructions for loading integers of common sizes (8/16/32/64)
+into the least-significant part of an I register as well as conversion
+operations for sign- and zero-extension (and the inverse conversion).
+
+The conversion could be combined with the get/set instructions, resulting in
+instruction like get_u8/set_u8, get_s8/set_s8, ...
+
+------------------------------------------------------------
+Second nopaste
+------------------------------------------------------------
+
+
+NOTE: We assume a uniform pointer representation corresponding to the C type
+void*. Pointers with different representations are not supported.
+
+
+add_p
+-----
+Treat *$2 as a pointer and *$3 as an integer, add *$3 to *$2 and store the
+result in *$1.
+
+
+sub_p
+-----
+Treat *$2 as a pointer and *$3 as an integer, substract *$3 from *$2 and store
+the result in *$1.
+
+
+get_p
+-----
+Treat *$1 and *$2 as pointers, load a pointer from address *$2 and store it in
+*$1. $3 is ignored.
+
+
+set_p
+-----
+Treat *$1 and *$2 as pointers, load *$2 and store it at address *$1. $3 is
+ignored.
+
+
+NOTE: For the next two ops, XX is one of 8, 16, 32, 64
+
+
+get_XX
+------
+Treat *$2 as a pointer and $3 as an immediate constant indicating the conversion
+to be performed, ie one of SIGNED, UNSIGNED, FLOAT.
+
+Load a value of width XX from address *$2 and store the converted value in *$1,
+which is treated as either integer or numeric depending on the conversion type.
+
+If the conversion type is SIGNED, the value is sign-extended to the width of I
+registers.
+
+If the conversion type is UNSIGNED, the value is zero-extended to the width of I
+registers.
+
+If the conversion type is FLOAT, the value is converted to the precision of N
+registers.
+
+Valid values for XX in case of FLOAT conversions are 32 for single- and 64 for
+double-precision and possibly 16 for half-precision (see
+http://www.mathworks.com/matlabcentral/fileexchange/23173 for an
+implementation).
+
+If the value is not in range of the register types (eg if I registers have a
+width of 32 and the instruction tries to load a 64-bit integer), the register is
+set to the nearest representable value, or, in case of out of range
+floating-point values, infinity, of correct sign.
+
+If *$2 is not correctly aligned for access of the specified width, the behaviour
+is undefined.
+
+
+set_XX
+------
+Treats *$1 as a pointer and $3 as an immediate constant indicating the
+conversion to be performed, ie one of SIGNED, UNSIGNED, FLOAT.
+
+Loads *$2 and stores the converted value at address *$1.
+
+Conversion behaviour corresponds to get_XX.
+
+------------------------------------------
+third nopaste
+------------------------------------------
+
+
+add_p
+-----
+Treat *$2 as a pointer and *$3 as an integer, add *$3 to *$2 and store the
+result in *$1.
+
+
+sub_p
+-----
+Treat *$2 as a pointer and *$3 as an integer, substract *$3 from *$2 and store
+the result in *$1.
+
+
+load
+----
+Treat *$2 as a pointer and $3 as immediate constant indicating the type of the
+pointed-to value. Load a value of specified type from address *$2 and store a
+corresponding value in *$1, which is treated as either integer or numeric
+depending on the value of $3.
+
+The possible values for $3 are the same as the ones for the FFI instructions.
+
+If the type is signed, the value is sign-extended to the width of I registers.
+If the type is unsigned, the value is zero-extended to the width of I registers.
+If the type is a floating-point type, the value is converted to the precision of
+N registers.
+If the value is a pointer type, no conversions are necessary as a uniform
+pointer representation is assumed.
+
+If the value is not in range of the register types, the register is set to the
+nearest representable value of correct sign, or, in case of out of range
+floating-point values, infinity.
+
+If *$2 is not correctly aligned for types of specified width, the behaviour is 
+undefined.
+
+
+store
+-----
+Treat *$1 as a pointer and $3 as immediate constant indicating the type of the
+pointed-to value. Load a value of specified type from address *$2 and store a
+corresponding value in *$1, which is treated as either integer or numeric
+depending on the value of $3.
+
+The possible values for $3 are the same as the ones for the FFI instructions.
+
+The conversions correspond to the ones performed by the load instruction.
+
+If *$1 is not correctly aligned for types of specified width, the behaviour is 
+undefined.
