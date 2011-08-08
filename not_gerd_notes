@@ -1,28 +1,5 @@
 COMENTS ON THE M0 INSTRUCTION SET
 
-Control flow
-------------
-Any conditional branching instruction (ie goto_if) should be accompanied by an
-instruction accepting the complement as argument. This is necessary to
-efficiently implement certain higher-level control flow constructs.
-
-Prior art includes x86 ASM (jz, jnz) and Nanojit LIR (jt, jf).
-
-LLVM IR chooses a different approach: Their branching instruction (br) accepts
-two labels. This decision is probably related to their control flow semantics:
-as branching terminates the current basic block anyway, falling through to the
-next instruction has no real benefit.
-
-Also, I don't see a reason to calculate target addresses via 256 * *$1 + *$2 as
-the operands are not immediate (according to spec). One could use such a scheme
-to increase the size of the address space, but for that purpose, a higher value
-than 256 (ie UINT_MAX) should be used. It's probably unnecessary anyway because
-a chunk's bytecode segment size should never exceed 2^32.
-
-If the spec is indeed correct that the branching instructions take non-immediate
-operands, adding immediate versions might be a good idea.
-
-
 Math/numeric ops
 ----------------
 Currently, the math instructions do not respect the difference between signed
