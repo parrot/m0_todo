@@ -1,6 +1,7 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * think about how type information needs to flow from HLLs to M0
  * add goto_unless (opposite of goto_if)
  * add bitwise NOT
  * move spilling discussion closer to description of registers
