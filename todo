@@ -1,6 +1,10 @@
 Before M0 is considered "final", the following need to happen:
 
 TODO:
+ * make M0 more closely match how real-world CPUs work to minimize the mistmatch when generating code
+   - lots of instructions is fine
+   - requiring a jit or optimizer isn't
+   - a bunch of control flow variants would be a good starting point
  * think about how type information needs to flow from HLLs to M0
  * add goto_unless (opposite of goto_if)
  * add bitwise NOT
